@@ -1,0 +1,15 @@
+services:
+  automations:
+    image: nginx:alpine
+    container_name: automations
+    restart: unless-stopped
+
+    volumes:
+      - ./publicar:/usr/share/nginx/html:ro
+
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
