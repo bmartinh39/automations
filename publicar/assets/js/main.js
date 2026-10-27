@@ -1,7 +1,7 @@
 /* Edita aquí tus datos de contacto */
 var CONTACT = {
   phone: "34600000000",
-  email: "tu@correo.com",
+  email: "borja@borjamartin.com",
   msg: "Hola, me gustaría hablar de cómo simplificar las tareas de mi negocio.",
 };
 
