@@ -1,3 +1,7 @@
+document.querySelectorAll("[data-current-year]").forEach(function (element) {
+  element.textContent = new Date().getFullYear();
+});
+
 /* Edita aquí tus datos de contacto */
 var CONTACT = {
   phone: "34600000000",
