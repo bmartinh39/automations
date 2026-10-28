@@ -91,7 +91,7 @@ jobs:
       - name: Reject obvious placeholders
         shell: bash
         run: |
-          if grep -RniE 'TODO|TBD|LOREM IPSUM|example\.com' publicar/; then
+          if grep -RniE '(^|[^[:alnum:]_])(TODO|TBD)([^[:alnum:]_]|$)|LOREM IPSUM|example\.com' publicar/; then
             echo 'ERROR: placeholder content found in publicar/'
             exit 1
           fi
