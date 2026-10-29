@@ -9,7 +9,7 @@
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(12,34,51,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:#081923}
 h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0;letter-spacing:-.02em}
 p{margin:0}
 a{color:inherit}
@@ -21,11 +21,11 @@ a{color:inherit}
 .skip-link:focus{transform:none}
 
 /* navbar */
-.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:rgba(12,34,51,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:#081923;border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 4px 18px rgba(0,0,0,.12);color:#fff}
 .nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
 .brand{font:700 20px var(--head);text-decoration:none;margin-right:auto;letter-spacing:-.01em}
 .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
-.nav ul a{text-decoration:none;font-weight:500;font-size:15px;opacity:.88}
+.nav ul a{text-decoration:none;font-weight:500;font-size:15px;opacity:1}
 .nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
 .menu-toggle {
   display: none;
