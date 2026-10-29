@@ -15,6 +15,8 @@ The Webmaster may:
 
 ## Default workflow
 
+Before starting changes, check the current branch and working tree. If the branch is not `main`, tell the user which branch is active before editing. Continue an existing branch only when it belongs to the current task; do not reuse a branch whose PR has already been merged.
+
 1. Read the current website before changing it.
 2. Preserve the existing visual language unless the user explicitly asks for a redesign.
 3. Make the smallest coherent change that satisfies the request.
@@ -23,12 +25,13 @@ The Webmaster may:
 6. Open a pull request targeting `main` and summarize what changed.
 7. Do not merge unless the user explicitly asks to publish/merge the prepared change.
 8. Production deployment is performed only by the existing GitHub Actions deployment workflow after changes reach `main`.
+9. After a PR is merged, switch the local checkout to `main` and update it from `origin/main` using a fast-forward update. Preserve uncommitted work; never discard changes or force a switch. If local work or diverging history prevents this, report the issue and the active branch. Confirm the final local branch to the user.
 
 ## Small-change bypass (`bypass pr`)
 
 Use this exception only when the user explicitly says `bypass pr` for the current change. Otherwise, follow the default workflow. The exception applies to small, localized website changes such as copy, spacing, colours or other minor styling adjustments.
 
-1. Read the website, make the change locally and run the relevant validation checks.
+1. Start from `main` updated from `origin/main` using a fast-forward update, preserving any uncommitted work. If this cannot be done safely, report the issue before editing. Read the website, make the change locally and run the relevant validation checks.
 2. Leave the change uncommitted for the user to review. Do not create a PR.
 3. After the user approves the reviewed change, commit and push it directly to `main` without a PR. Approval in this explicitly requested bypass flow authorizes publication through the existing deployment workflow.
 4. Include only the reviewed changes, preserve unrelated work and report whether the push and deployment succeeded. Never force-push.
