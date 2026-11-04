@@ -2,28 +2,6 @@ document.querySelectorAll("[data-current-year]").forEach(function (element) {
   element.textContent = new Date().getFullYear();
 });
 
-/* Edita aquí tus datos de contacto */
-var CONTACT = {
-  phone: "34600000000",
-  email: "borja@borjamartin.com",
-  msg: "Hola, me gustaría hablar de cómo simplificar las tareas de mi negocio.",
-};
-
-document.querySelectorAll("[data-wa]").forEach(function (a) {
-  a.href =
-    "https://wa.me/" + CONTACT.phone + "?text=" + encodeURIComponent(CONTACT.msg);
-  a.target = "_blank";
-  a.rel = "noopener";
-});
-
-document.querySelectorAll("[data-mail]").forEach(function (a) {
-  a.href =
-    "mailto:" +
-    CONTACT.email +
-    "?subject=" +
-    encodeURIComponent("Conversación sobre mi negocio");
-});
-
 var tabs = [].slice.call(document.querySelectorAll(".tab"));
 var tabList = document.querySelector(".tabs");
 var activeSectorIndex = null;
@@ -172,7 +150,7 @@ if (header && menuToggle && navigation) {
     var wasHidden = navigation.hidden;
 
     menuToggle.setAttribute("aria-expanded", String(open));
-    menuToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    menuToggle.setAttribute("aria-label", open ? menuToggle.dataset.closeLabel : menuToggle.dataset.openLabel);
     // Al cerrar, los enlaces dejan de recibir foco durante la transición.
     navigation.inert = closed;
     navigation.setAttribute("aria-hidden", String(closed));
