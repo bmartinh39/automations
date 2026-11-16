@@ -1,0 +1,137 @@
+Contact
+www.linkedin.com/in/
+borjamartinhernandez (LinkedIn)
+Top Skills
+Windows
+C++
+HTML
+Languages
+English (Professional Working)
+Spanish (Native or Bilingual)
+Certifications
+C2 Cambridge English Proficiency
+Certificate
+AWS Academy Educator
+Borja Martin
+.NET Backend Developer | C# · .NET Core · REST APIs · SQL
+Server | React
+Greater Madrid Metropolitan Area
+Summary
+I’m a software engineer with 12+ years of professional experience
+building C#/.NET applications, now looking to return to a backend
+development role.At Acerca Partners, I spent three years developing
+iDocCar, an application for the automotive sector. My work included
+C# backend functionality and API endpoints on .NET Framework
+4.8, SQL Server scripts, and React integration. Previously at
+TUI, I developed applications and REST APIs with C#, .NET 5,
+Entity Framework and SQL Server, working with microservices
+and automated tests.My background also includes enterprise
+web development at Accenture, AXA and Enterprise Registry
+Solutions in Dublin. I’m particularly interested in backend roles using
+C# and modern .NET, and I’m comfortable contributing to React
+frontends when needed.I currently teach software development and
+deployment in higher vocational education, including practical work
+with Docker. I’m based in Madrid and hold a Cambridge C2 English
+qualification.
+Experience
+IES Gaspar Melchor de Jovellanos
+Computer Science Educator | Higher Vocational Training
+September 2026 - Present (3 months)
+Fuenlabrada, Community of Madrid, Spain
+• Teach web applications, web application deployment and mobile
+development with Kotlin in higher vocational education.
+• Include practical work with Docker and containerised application workflows.
+IES Centro Integral FP a Distancia Ignacio Ellacuría
+Full Stack Web Development Educator | Higher Vocational Training
+September 2024 - August 2026 (2 years)
+Madrid, Community of Madrid, Spain
+• Taught web applications, web application deployment and server-side
+development to adult distance-learning students.
+  Page 1 of 4
+   
+• Delivered hands-on labs covering Apache, Tomcat/WAR files and PHP.
+• Wrote and updated course materials, recorded technical videos and led in-
+person training sessions.
+Acerca Partners
+.NET C# / React Developer
+August 2021 - August 2024 (3 years 1 month)
+Madrid, Community of Madrid, Spain
+Worked on iDocCar, a platform that helps automotive companies manage
+vehicle registration for their customers.
+• Developed backend functionality in C# on .NET Framework 4.8, including API
+endpoints and application logic.
+• Wrote and modified SQL Server database scripts to support new features.
+• Implemented React code integrated with the backend APIs.
+• Worked with GitHub pull requests and Git Flow, using Jenkins for continuous
+integration.
+• Worked on supporting applications using .NET Core.
+TUI
+.NET Developer
+July 2020 - July 2021 (1 year 1 month)
+Spain
+• Developed applications and REST APIs using C#, .NET 5 and Entity
+Framework Code First with SQL Server.
+• Worked on a microservices-based system using dependency injection and
+Swagger/OpenAPI for API documentation and testing.
+• Developed user-facing functionality with Blazor alongside backend services
+and APIs.
+• Wrote automated unit tests using NUnit.
+Freelance Web Development
+React Developer
+January 2020 - June 2020 (6 months)
+Madrid, Community of Madrid, Spain
+Developed web applications with React and designed user interfaces.
+Undertook courses and professional training.
+Universidad Rey Juan Carlos
+Associate Lecturer
+January 2017 - September 2019 (2 years 9 months)
+  Page 2 of 4
+   
+Taught programming, databases and computer architecture as an associate
+lecturer at Universidad Rey Juan Carlos.
+Enterprise Registry Solutions
+ASP.NET MVC 4 / jQuery Mobile Developer
+August 2014 - December 2016 (2 years 5 months)
+Dublin
+• Built new features and reviewed existing functionality in an ASP.NET MVC 4
+web application using C# and SQL Server, implementing business logic and
+user interfaces.
+• Tested and optimised existing code.
+• Developed the mobile web version with jQuery Mobile.
+Technologies: C#, ASP.NET MVC 4, SQL Server 2008, jQuery, jQuery Mobile,
+JavaScript, AJAX, HTML, CSS3 and Visual Studio 2013.
+AXA Seguros S.A.
+ASP.NET Web Forms / C# Developer
+January 2014 - June 2014 (6 months)
+Madrid, Community of Madrid, Spain
+• Developed C# functionality and user interface components for an ASP.NET
+Web Forms application.
+• Used JavaScript components, including JQGrid, and worked on responsive
+design.
+Universidad Rey Juan Carlos
+Computer Science Bachelor’s Degree Final Project
+February 2013 - December 2013 (11 months)
+Madrid, Community of Madrid, Spain
+Developed a responsive web application to study learning styles in university
+classrooms as a final degree project.
+Accenture
+ASP.NET C# Developer / Mobile Developer
+April 2011 - January 2013 (1 year 10 months)
+Pozuelo de Alarcón, Community of Madrid, Spain
+• Maintained and improved an ASP.NET/C# web application, working across
+the backend and frontend.
+• Developed its mobile web version with jQuery Mobile.
+• Built and updated web and graphical interface components.
+  Page 3 of 4
+   
+Indra
+.NET C# Developer
+September 2007 - March 2011 (3 years 7 months)
+Madrid, Community of Madrid, Spain
+• Developed Windows Forms controls using C#.
+• Optimised and maintained existing code.
+• Contributed to a short ASP.NET web development project.
+Education
+Universidad Rey Juan Carlos
+Bachelor of Computer Science, Computer Science · (2004 - 2012)
+  Page 4 of 4

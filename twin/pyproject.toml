@@ -9,6 +9,7 @@ dependencies = [
     "pypdf~=6.10.2",
     "python-dotenv~=1.2.2",
     "requests~=2.33.1",
+    "starlette~=1.10.0",
 ]
 
 [tool.uv]

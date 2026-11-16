@@ -13,9 +13,11 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync --locked --no-dev --no-cache
 
-RUN useradd --create-home --uid 10001 app
+RUN useradd --create-home --uid 10001 app \
+    && mkdir /app/data \
+    && chown app:app /app/data
 
-COPY app.py context.py tools.py styles.py linkedin.pdf summary.txt ./
+COPY app.py context.py tools.py safeguards.py localization.py privacy.py styles.py profile.txt summary.txt ./
 
 USER app
 

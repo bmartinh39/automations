@@ -1,8 +1,11 @@
 from pathlib import Path
 import json
 import os
+import re
+import sqlite3
 import requests
 from dotenv import load_dotenv
+from safeguards import UsageLimitError
 
 load_dotenv(Path(__file__).resolve().parent / ".env", override=False)
 
@@ -12,25 +15,33 @@ pushover_token = os.getenv("PUSHOVER_TOKEN")
 pushover_url = "https://api.pushover.net/1/messages.json"
 
 
-def push(text):
-    requests.post(
-        pushover_url,
-        data={
-            "token": pushover_token,
-            "user": pushover_user,
-            "message": text,
-        },
-    )
-
-
-def record_user_details(email, name="Name not provided", notes="not provided"):
-    push(f"Recording interest from {name} with email {email} and notes {notes}")
+def push(text, usage, visitor):
+    if not pushover_user or not pushover_token:
+        return "Notification unavailable."
+    try:
+        # Reserve before sending; failures still consume a slot to prevent retry storms.
+        usage.reserve("notification", visitor)
+        response = requests.post(
+            pushover_url,
+            data={"token": pushover_token, "user": pushover_user, "message": text[:1000]},
+            timeout=(3, 5),
+        )
+        response.raise_for_status()
+        if response.json().get("status") != 1:
+            return "Notification unavailable."
+    except (UsageLimitError, requests.RequestException, ValueError, sqlite3.Error):
+        return "Notification unavailable or temporarily limited."
     return "OK"
 
 
-def record_unknown_question(question):
-    push(f"Recording {question} asked that I couldn't answer")
-    return "OK"
+def record_user_details(email, name="Name not provided", notes="not provided", *, usage, visitor):
+    if len(email) > 254 or not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email):
+        return "Please provide a valid email address."
+    return push(f"Interest from {name[:100]}, email {email}, notes {notes[:500]}", usage, visitor)
+
+
+def record_unknown_question(question, *, usage, visitor):
+    return push(f"Unanswered question: {question[:500]}", usage, visitor)
 
 
 record_user_details_json = {
@@ -75,15 +86,27 @@ tool_map = {
 }
 
 
-def handle_tool_calls(tool_calls):
+def handle_tool_calls(tool_calls, usage, visitor):
     results = []
     for tool_call in tool_calls:
-        tool_name = tool_call.function.name
-        arguments = json.loads(tool_call.function.arguments)
-        print(f"Tool called: {tool_name}", flush=True)
-        tool = tool_map.get(tool_name)
-        result = tool(**arguments) if tool else "Unknown tool: " + tool_name
-        results.append(
-            {"role": "tool", "content": json.dumps(result), "tool_call_id": tool_call.id}
-        )
+        name = tool_call.function.name
+        schema = next((item["function"] for item in tools if item["function"]["name"] == name), None)
+        result = "Invalid tool request."
+        try:
+            raw = tool_call.function.arguments
+            if schema is None or not isinstance(raw, str) or len(raw) > 2000:
+                raise ValueError("Invalid arguments")
+            arguments = json.loads(raw)
+            parameters = schema["parameters"]
+            if (
+                not isinstance(arguments, dict)
+                or not set(arguments).issubset(parameters["properties"])
+                or not set(parameters["required"]).issubset(arguments)
+                or not all(isinstance(value, str) and len(value) <= 1000 for value in arguments.values())
+            ):
+                raise ValueError("Invalid arguments")
+            result = tool_map[name](**arguments, usage=usage, visitor=visitor)
+        except (ValueError, TypeError):
+            pass
+        results.append({"role": "tool", "content": json.dumps(result), "tool_call_id": tool_call.id})
     return results

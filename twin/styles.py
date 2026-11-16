@@ -4,13 +4,6 @@ GOLD = "#F2B632"
 BLUE = "#0C2233"
 NAVY = BLUE
 
-EXAMPLES = [
-    "Tell me about your background and experience.",
-    "What kinds of projects are you working on now?",
-    "What are your strongest technical skills?",
-    "How can I get in touch with you?",
-]
-
 CSS = """
 /* Brand palette and typography from borjamartin.com/assets/css/styles.css. */
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap');
@@ -374,7 +367,9 @@ button[variant="primary"] svg {
 
 JS = """
 () => {
-  document.title = 'Digital Twin';
+  const language = (new URLSearchParams(window.location.search).get('lang') || '').toLowerCase() === 'es' ? 'es' : 'en';
+  document.documentElement.lang = language;
+  document.title = language === 'es' ? 'Gemelo digital' : 'Digital Twin';
 
   const focusInput = () => {
     const areas = document.querySelectorAll('textarea');
