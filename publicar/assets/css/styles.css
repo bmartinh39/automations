@@ -70,6 +70,13 @@ a{color:inherit}
 .flow{stroke-dasharray:6 8;animation:dash 2.4s linear 2}
 @keyframes dash{to{stroke-dashoffset:-56}}
 
+/* digital twin demonstration */
+.twin-demo{grid-column:1/-1;min-width:0;padding-top:28px;border-top:1px solid rgba(255,255,255,.16)}
+.twin-demo h2{font-size:clamp(24px,3vw,30px);line-height:1.25}
+.twin-demo p{max-width:620px;margin-top:12px;color:#C9D8E2}
+.twin-demo .twin-demo-note{font-size:14px;margin-top:8px}
+.twin-demo .btn{margin-top:20px;max-width:100%;text-align:center}
+
 /* sections */
 section{padding:92px 0}
 .intro{max-width:680px;margin-bottom:44px}
@@ -250,6 +257,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   section{padding:48px 0}
   .hero{padding-bottom:48px}
   .hero .wrap{gap:28px}
+  .hero .cta-row{justify-content:center}
+  .hero-copy{display:contents}
+  .hero .wrap > svg{order:1}
+  .hero-copy > .proof{order:2;margin-top:0}
+  .hero .twin-demo{order:3}
+  .twin-demo .btn{display:block;width:fit-content;margin-inline:auto}
   .hero svg{max-width:280px;margin-inline:auto}
   .intro{margin-bottom:28px}
   .proof{margin-top:28px;padding-top:20px}
