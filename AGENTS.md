@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Maintain borjamartin.com, the commercial website for Borja Martín’s automation and custom software services. The site lives under `publicar/` in `bmartinh39/automations`.
+Maintain borjamartin.com, the commercial website for Borja Martín’s automation and custom software services. The static site lives under `publicar/` and the Python/Gradio digital twin lives under the sibling `twin/` directory in `bmartinh39/automations`.
 
 The Spanish site serves businesses across Spain. The English site serves international clients. Borja is based in Madrid and can work remotely.
 
@@ -13,7 +13,8 @@ The Webmaster may:
 - Edit copy, structure, styling and client-side behaviour under `publicar/`.
 - Add or remove website assets under `publicar/assets/`.
 - Maintain the Spanish and English versions, including navigation, calls to action, accessibility and search metadata.
-- Inspect repository configuration and deployment checks relevant to a website change.
+- Maintain the digital twin under `twin/`, including its Python code, dependencies, Dockerfile and website embedding, within the agreed task scope.
+- Prepare reviewed Compose changes for the twin and inspect configuration and deployment checks relevant to the change.
 - Prepare a proposed Caddy configuration or diff for language routing and document how to validate it.
 - Commit changes on a dedicated branch, open a pull request and address issues found during review or validation.
 
@@ -29,7 +30,7 @@ Before editing, check the active branch and working tree. If the active branch i
 4. Check links, assets, semantics, accessibility and responsive behaviour. Run the checks relevant to the change.
 5. Commit the reviewed scope on a branch other than `main` and open a PR targeting `main`, respecting any staged review instructions below. Summarize the change, validation results and any infrastructure step required for rollout.
 6. Merge only when the user explicitly authorizes merging or publishing the prepared change.
-7. Deploy website changes through the existing GitHub Actions workflow after they reach `main`. Check the deployment result and report whether the change is live. If verification is unavailable, say what remains unverified.
+7. Deploy website changes through the existing GitHub Actions workflow after they reach `main`. Once twin deployment is implemented and verified, use that workflow for twin changes too. Check the deployment result and report whether the change is live. If verification is unavailable, say what remains unverified.
 8. After merge, if a local checkout is available, switch it to `main` and update it from `origin/main` using a fast-forward-only update. Preserve uncommitted work. If local changes or diverging history prevent a safe update, report the blocker and the active branch. Confirm the final local branch.
 
 ## Change size and review
@@ -96,6 +97,19 @@ Use this exception only when the user explicitly says `bypass pr` for the curren
 - Implement the language pages and validate their direct URLs before enabling automatic root routing. Document the Caddy change, rollout order, validation commands and rollback procedure in the PR.
 - Keep the bilingual setup on the existing hostname. Paths alone require no DNS changes.
 
+## Digital twin architecture and deployment
+
+- Agreed target: `twin.borjamartin.com`, with a `twin` CNAME pointing to `borjamartin.com`. Caddy terminates HTTPS and proxies to a separate `twin` Docker Compose service on the existing external `web` network. Keep the twin port internal to Docker; do not publish an additional host port.
+- Keep the twin in this repository under `twin/`, outside `publicar/`. The website can embed the Gradio interface from the subdomain, which also works directly. Preserve the existing Spanish/English routing and analytics service.
+- Give the twin its own Python project, `pyproject.toml` and committed `uv.lock`. Use `uv` to install locked production dependencies inside its Docker image; the VPS host does not need uv. Do not include the course repository's full dependency set.
+- Current state: Compose runs only the static website service. The GitHub Actions deployment fetches and resets `/opt/apps/automations` to `origin/main`; it does not build images or run Compose. The subdomain route, twin container and automatic twin deployment are planned, not verified live.
+- Target deployment: after reviewed changes reach `main`, GitHub Actions updates the checkout and builds/recreates the twin when its application, dependency or container configuration changes. Preserve the existing website deployment behavior for website-only changes. Implement the workflow change as a separate, explicitly requested step.
+- Keep routine twin deployments separate from applying DNS or live Caddy changes. Agreement on the architecture does not authorize those production changes; prepare the exact configuration and rollout/rollback steps for review first.
+- Before public deployment, bound tool-call rounds and request/history sizes, configure concurrency and request limits, and add timeouts and useful error handling for model and notification requests. Keep API keys on the server and prevent public abuse from causing unbounded API costs or notifications. Do not log secrets or visitor contact details unnecessarily.
+- Validate changes at the relevant layer: Python syntax and behavior, locked dependency installation, image build, Compose configuration, container startup and chat/tool behavior. Use mocked external calls where practical. Do not claim chat functionality is verified from a successful image build alone, or incur paid API calls without authorization.
+- Once the implementation exists, document exact local run, build, validation and deployment commands alongside the twin. Verify the live HTTPS subdomain and embedded chat after deployment, and report any checks that could not be completed.
+- Infrastructure reference: [Infrastructure Details for AI](https://app.notion.com/p/41aea85eec91808cbf90cdf3ba7c43aa). Read it before infrastructure planning; distinguish recorded observations, unknowns and proposed changes. Update it when an authorized rollout changes the configuration.
+
 ## Accessibility, SEO and performance
 
 - Keep the site lightweight. Use semantic HTML and progressive enhancement. Add a framework or build system only when the task calls for it.
@@ -107,7 +121,7 @@ Use this exception only when the user explicitly says `bypass pr` for the curren
 
 ## Safety boundaries
 
-- Do not access, create, rotate, expose or modify secrets, SSH keys, GitHub secrets or repository variables.
+- Do not access, create, rotate, expose or modify secrets, SSH keys, GitHub secrets or repository variables. Keep `.env` files, virtual environments, Python caches and secret values out of commits and Docker build contexts; document required variable names without values.
 - Do not access the VPS directly as part of routine webmaster work. Keep live Caddy configuration, DNS, the firewall, Docker host configuration and server users outside that workflow.
 - Prepare Caddy routing as a reviewable proposal. A website PR approval covers the website changes. Applying live infrastructure changes requires separate, explicit authorization.
 - Change `.github/workflows/deploy.yml` only when the user explicitly requests a deployment workflow change. Preserve the existing production deployment process for routine site edits.

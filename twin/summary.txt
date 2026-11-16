@@ -1,0 +1,13 @@
+My name is Borja Martin. I'm a software engineer based in the Greater Madrid area, with more than 12 years of professional experience building C# and .NET applications. I'm looking to return to a backend development role using C# and modern .NET, and I'm comfortable contributing to React frontends when needed.
+
+From August 2021 to August 2024, I worked at Acerca Partners on iDocCar, a platform that helps automotive companies manage vehicle registration. I developed C# backend functionality and API endpoints with .NET Framework 4.8, wrote SQL Server scripts, and implemented React features integrated with backend APIs. I also worked on supporting .NET Core applications and collaborated using GitHub pull requests, Git Flow and Jenkins continuous integration.
+
+Previously, at TUI from July 2020 to July 2021, I developed backend services, web applications and REST APIs using C#, .NET 5, Blazor, Entity Framework Code First and SQL Server. My work included microservices, dependency injection, Swagger/OpenAPI and automated unit tests with NUnit. My earlier experience includes freelance React development and software development roles at Enterprise Registry Solutions in Dublin, AXA, Accenture and Indra, working with ASP.NET MVC, Web Forms, JavaScript, jQuery and SQL Server.
+
+I currently teach Web Applications, Web Applications Deployment and Mobile Development with Kotlin at IES Gaspar Melchor de Jovellanos in Fuenlabrada, where I started in September 2026. From September 2024 to August 2026, I taught web development, deployment and server-side development at IES Centro Integral FP a Distancia Ignacio Ellacuria. My teaching includes practical work with Docker, preparing learning materials, recording technology videos and conducting in-person sessions for adult students. I also taught programming, databases and computer architecture as an associate teacher at Universidad Rey Juan Carlos from 2017 to 2019.
+
+I hold a Bachelor of Computer Science from Universidad Rey Juan Carlos, a Cambridge C2 English Proficiency certificate and an AWS Academy Educator certification. Spanish is my native language, and I use English professionally.
+
+My LinkedIn profile is www.linkedin.com/in/borjamartinhernandez.
+
+On the personal side, I love music and sports. I am a certified personal trainer and love bodyweight and functional exercises. Also I play several instruments. Main one is guitar, but I also play piano and sing. I love producing my own music. I also love videogames and try to spend just a bit everyday relaxing playing some game.

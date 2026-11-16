@@ -1,13 +1,18 @@
-name: Deploy website
+name: Deploy website and twin
 
 on:
   push:
     branches:
       - main
 
+concurrency:
+  group: production-deployment
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Configure SSH
@@ -29,7 +34,23 @@ jobs:
           VPS_USER: ${{ vars.VPS_USER }}
         run: |
           ssh "$VPS_USER@$VPS_HOST" '
-            cd /opt/apps/automations &&
-            git fetch origin main &&
+            set -eu
+            cd /opt/apps/automations
+            git fetch origin main
             git reset --hard origin/main
+
+            # Reuse cached layers and recreate only the twin when needed.
+            docker compose up -d --build --no-deps twin
+
+            # Confirm the app responds without making a model request.
+            for attempt in $(seq 1 30); do
+              if docker compose exec -T twin /app/.venv/bin/python -c "from urllib.request import urlopen; assert urlopen(\"http://127.0.0.1:7860/\", timeout=2).status == 200" >/dev/null 2>&1; then
+                echo "Twin startup check passed"
+                exit 0
+              fi
+              sleep 2
+            done
+
+            echo "Twin did not become ready before the startup check timed out" >&2
+            exit 1
           '

@@ -1,0 +1,13 @@
+# Only the files needed to build and run the twin enter the build context.
+# This excludes .env files, .venv, Python caches and future unlisted files.
+*
+!Dockerfile
+!.dockerignore
+!pyproject.toml
+!uv.lock
+!app.py
+!context.py
+!tools.py
+!styles.py
+!linkedin.pdf
+!summary.txt
