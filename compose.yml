@@ -16,6 +16,9 @@ services:
     restart: unless-stopped
     init: true
 
+    volumes:
+      - twin_usage:/app/data
+
     # Keep production secrets outside the repository; override for local runs.
     env_file:
       - ${TWIN_ENV_FILE:-/opt/secrets/twin.env}
@@ -29,3 +32,6 @@ services:
 networks:
   web:
     external: true
+
+volumes:
+  twin_usage:

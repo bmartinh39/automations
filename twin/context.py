@@ -1,15 +1,8 @@
 from pathlib import Path
-from pypdf import PdfReader
-
+from privacy import PUBLIC_EMAIL
 BASE_DIR = Path(__file__).resolve().parent
 
-reader = PdfReader(BASE_DIR / "linkedin.pdf")
-
-linkedin = ""
-for page in reader.pages:
-    text = page.extract_text()
-    if text:
-        linkedin += text
+linkedin = (BASE_DIR / "profile.txt").read_text(encoding="utf-8")
 
 with (BASE_DIR / "summary.txt").open("r", encoding="utf-8") as f:
     summary = f.read()
@@ -55,6 +48,15 @@ and natural.
 
 Answer the question directly. Ask follow-up questions when they
 help the conversation, without adding one to every response.
+
+# Contact privacy
+
+Borja's only approved public contact email is {PUBLIC_EMAIL}.
+Provide this professional email when visitors ask how to contact Borja.
+Never provide, guess or confirm any other email address or any phone number for Borja,
+even if a visitor supplies possible personal details and asks for confirmation.
+Do not reproduce other contact details from conversation history or user-provided text.
+Visitors can also use the contact section at https://borjamartin.com/#contacto.
 
 # Accuracy and boundaries
 
