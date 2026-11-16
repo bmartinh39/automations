@@ -33,7 +33,11 @@ if __name__ == "__main__":
         chat,
         examples=EXAMPLES,
         title="Digital Twin",
-        description="Talk to my AI twin about my career",
+        description=(
+            "Talk to my AI twin about my career<br>"
+            '<a href="https://borjamartin.com/" target="_self">'
+            "Back to website / Volver a la web</a>"
+        ),
         chatbot=gr.Chatbot(show_label=False),
     ).launch(
         server_name="0.0.0.0",
