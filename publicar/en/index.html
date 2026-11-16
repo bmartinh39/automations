@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css?v=20261029-1">
 <script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/twin.js" defer></script>
 <script src="../assets/js/language-preference.js" defer></script>
 <script defer src="https://analytics.borjamartin.com/script.js" data-website-id="5ac6e45a-a960-495a-aa87-664ab7a96875"></script>
 </head>
@@ -46,13 +47,15 @@
 <main id="inicio" tabindex="-1">
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
-    <div>
-      <p class="eyebrow">Custom software · Workflow automation</p>
-      <h1 id="hero-title">Less repetitive work. More time for your business.</h1>
-      <p class="lead">I automate tasks and build custom software for small and midsize businesses. We start with a free conversation to understand how you work and explore practical improvements.</p>
-      <div class="cta-row">
-        <a class="btn" href="#contacto">Tell me about your business</a>
-        <a class="btn ghost" href="#metodo">See how I work</a>
+    <div class="hero-copy">
+      <div class="hero-message">
+        <p class="eyebrow">Custom software · Workflow automation</p>
+        <h1 id="hero-title">Less repetitive work. More time for your business.</h1>
+        <p class="lead">I automate tasks and build custom software for small and midsize businesses. We start with a free conversation to understand how you work and explore practical improvements.</p>
+        <div class="cta-row">
+          <a class="btn" href="#contacto">Tell me about your business</a>
+          <a class="btn ghost" href="#metodo">See how I work</a>
+        </div>
       </div>
       <div class="proof">
         <span><b>10+ years</b> building professional software</span>
@@ -81,6 +84,16 @@
       <g fill="#C9D8E2"><rect x="406" y="132" width="76" height="8" rx="4"/><rect x="406" y="180" width="64" height="8" rx="4"/><rect x="406" y="228" width="72" height="8" rx="4"/><rect x="406" y="276" width="56" height="8" rx="4"/></g>
       <rect x="381" y="322" width="98" height="30" rx="8" fill="#0C2233"/><rect x="395" y="334" width="70" height="7" rx="3.5" fill="#F2B632"/>
     </svg>
+    <div class="twin-demo">
+      <h2>Want to get to know me better?</h2>
+      <p>Ask my AI twin about my experience, projects, and interests.</p>
+      <p class="twin-demo-note">A demonstration of how AI can answer questions about a person or business.</p>
+      <details data-twin-chat>
+        <summary class="btn ghost">Talk to my AI twin</summary>
+        <iframe data-twin-frame data-src="https://twin.borjamartin.com/?lang=en" title="Borja’s AI twin" referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+        <noscript><p><a href="https://twin.borjamartin.com/?lang=en">Open the chat on a separate page</a></p></noscript>
+      </details>
+    </div>
   </div>
 </section>
 
