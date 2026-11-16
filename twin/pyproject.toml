@@ -1,0 +1,15 @@
+[project]
+name = "borja-digital-twin"
+version = "0.1.0"
+description = "Borja Martin's website digital twin"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "gradio~=6.14.0",
+    "openai~=2.34.0",
+    "pypdf~=6.10.2",
+    "python-dotenv~=1.2.2",
+    "requests~=2.33.1",
+]
+
+[tool.uv]
+package = false

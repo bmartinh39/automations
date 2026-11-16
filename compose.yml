@@ -10,6 +10,22 @@ services:
     networks:
       - web
 
+  twin:
+    build:
+      context: ./twin
+    restart: unless-stopped
+    init: true
+
+    # Keep production secrets outside the repository; override for local runs.
+    env_file:
+      - ${TWIN_ENV_FILE:-/opt/secrets/twin.env}
+
+    expose:
+      - "7860"
+
+    networks:
+      - web
+
 networks:
   web:
     external: true
